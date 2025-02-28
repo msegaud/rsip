@@ -73,12 +73,19 @@ impl<'a> TryFrom<Tokenizer<'a>> for Via {
 
 impl std::fmt::Display for Via {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let uri = self.uri.clone();
+        let mut uri = format!("{uri}");
+        if uri.starts_with("sip:")
+        {
+            uri = uri[4..].to_string();
+        }
+
         write!(
             f,
             "{}/{} {}{}",
             self.version,
             self.transport,
-            self.uri,
+            uri,
             self.params
                 .iter()
                 .map(|s| s.to_string())

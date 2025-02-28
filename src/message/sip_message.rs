@@ -187,7 +187,7 @@ pub mod tokenizer {
     }
 
     impl<'a> Tokenizer<'a> {
-        pub fn tokenize(part: &'a [u8]) -> IResult<Self> {
+        pub fn tokenize(part: &'a [u8]) -> IResult<'a, Self> {
             use nom::{branch::alt, combinator::map};
 
             let (_, message) = alt((

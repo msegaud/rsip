@@ -273,8 +273,6 @@ pub use message::{Request, Response, SipMessage};
 pub use crate::common::uri::*;
 pub use crate::common::*;
 
-pub use crate::message::header_macros::*;
-
 pub mod typed {
     pub use crate::headers::typed::*;
 }
